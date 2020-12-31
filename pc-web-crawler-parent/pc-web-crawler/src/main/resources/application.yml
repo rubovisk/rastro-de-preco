@@ -1,0 +1,11 @@
+server:
+  port: 8051
+  servlet:
+    contextPath: /web-crawler
+spring:
+  data:
+      mongodb:
+        uri: mongodb://192.168.15.13:27017/pcsearchcrawler
+selenium:
+#  driverPath: c:\projetos\chromedriver.exe
+   driverPath: /opt/projetos/chromedriver
