@@ -12,6 +12,9 @@ import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Functions;
+import com.google.common.collect.Lists;
+
 import br.com.dickinho.hack.dto.LineChartDto;
 import br.com.dickinho.hack.model.PriceHistory;
 import br.com.dickinho.hack.repository.PriceHistoryRepository;
@@ -32,7 +35,11 @@ public class PriceHistoryService {
 	}
 	
 	public List<String> findAllDates() {
-		return priceHistorydRepository.findAllDates();
+		List<LocalDate> datas = new ArrayList<>();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		priceHistorydRepository.findAllDates().forEach(dt -> datas.add(LocalDate.parse(dt,formatter)));
+		Collections.sort(datas);
+		return Lists.transform(datas, Functions.toStringFunction());
 	}
 	
 	public List<LineChartDto> getChartData(String tipo){

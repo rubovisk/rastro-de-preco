@@ -5,7 +5,7 @@ server:
 spring:
   data:
       mongodb:
-        uri: mongodb://192.168.15.13:27017/pcsearchcrawler
+        uri: mongodb://192.168.15.21:27017/pcsearchcrawler
 selenium:
 #  driverPath: c:\projetos\chromedriver.exe
    driverPath: /opt/projetos/chromedriver
