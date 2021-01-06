@@ -93,7 +93,27 @@ public class PriceHistoryService {
 			else
 				values.add(0.0);
 		});
+		
+		Integer totalRecords = this.findAllDates().size();
+		
+		if(values.size() < totalRecords) {
+			return fillBlankDates(values.get(0),totalRecords);
+		}
+		
 		return values;
+	}
+	
+	private List<Double> fillBlankDates(Double uniqueValue,Integer totalRecords){
+		List<Double> fullPriceList = new ArrayList<Double>();
+		
+		
+		for(Integer i =0;i<totalRecords-1;i++) {
+			fullPriceList.add(0.0);
+		}
+		
+		fullPriceList.add(uniqueValue);
+		
+		return fullPriceList;
 	}
 	
 	private String getLineColor() {
